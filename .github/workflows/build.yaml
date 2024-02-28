@@ -22,12 +22,20 @@ jobs:
       - name: Install Go dependencies
         run: go get .
       - name: Build for Windows x64
-        run: go build -v -o ortlinde.exe
         env:
           GOOS: windows
           GOARCH: amd64
+        run: go build -v -o ortlinde.exe -ldflags="-X main.VERSION=$(date '+%Y-%m-%d').${GITHUB_SHA::7}"
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: ortlinde.exe
           path: ortlinde.exe
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          gh release create ${{ github.ref_name }}
+          "ortlinde.exe"
+          --generate-notes
+          --title "$(date '+%Y-%m-%d').${GITHUB_SHA::7}"
