@@ -22,6 +22,7 @@ const (
 	SDVX_LAUNCH_URL      = "https://p.eagate.573.jp/game/konasteapp/API/login/login.html?game_id=sdvx&refresh=true"
 	SDVX_MAINTENANCE     = "メンテナンス"
 )
+var VERSION = "[dev]"
 
 func main() {
 	launchDirect := true
@@ -31,12 +32,14 @@ func main() {
 		}
 	}
 
-	fmt.Println(`
+	fmt.Printf(`
 
      [[ Ortlinde: Simple SDVX コナステ Launcher ]]
+          > Version: %s
 
 
-[INIT] Checking login...`)
+[INIT] Checking login...
+`, VERSION)
 	session, expiry := getPersistedLogin()
 	if expiry != -1 {
 		fmt.Println("[AUTH] Checking login validity...")
