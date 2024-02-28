@@ -4,11 +4,17 @@
 
 Simple, as in simple on the code side. Doesn't try to deal with complicated auth, multiple games, UI, etc. Instead just prompts for your cookie from the official site if expired.
 
-For a more fleshed-out one, https://github.com/anon5r/KsGameLauncher might be better (note, not an endorsement from me. I haven't ever even downloaded it.).
+For a more fleshed-out one (not an endorsement! I haven't ever even downloaded it!), https://github.com/anon5r/KsGameLauncher could be better.
 
 I built this for myself to have a quick double click in to the game and easily auditable source code :)
 
-Windows x64 CI builds can be found at https://github.com/NexerqDev/ortlinde/actions (pick latest one and grab the exe in artifacts)
+## Usage
+
+Build with `go build`, or find precompiled downloads here: https://github.com/NexerqDev/ortlinde/releases
+
+Then simply follow the instructions given! You do require an existing SDVX Konasute installation, however, which should be automatically detected.
+
+NOTE: Ortlinde will assume you want to bypass patching (the official launcher) and hop right into the game. However, if you do wish to launch into the game, please provide simply `launcher` as the first argument to Ortlinde and you will be launched in there instead.
 
 ## Licence
 
